@@ -20,10 +20,12 @@ namespace Infrastructure.CSFiles.Templates
     /// </summary>
     /// <param name="classEntity">作成対象クラス情報</param>
     /// <param name="nameSpace">作成対象クラスのnamespace</param>
-    public CreateCS(ClassEntity classEntity, string nameSpace)
+    /// <param name="useSnakeCase">スネークケースのままとするか</param>
+    public CreateCS(ClassEntity classEntity, string nameSpace, bool useSnakeCase)
     {
       this.classEntity = classEntity;
       NameSpace = nameSpace;
+      UseSnakeCase = useSnakeCase;
     }
 
     /// <summary>
@@ -38,14 +40,31 @@ namespace Infrastructure.CSFiles.Templates
     public string FileName { get { return $"{GetCSName(classEntity.Name)}.cs"; } }
 
     /// <summary>
+    /// スネークケースのままとするか
+    /// </summary>
+    public bool UseSnakeCase { get; private set; }
+
+    /// <summary>
     /// テーブル名やカラム名からC#用名称を取得
     /// </summary>
     /// <param name="name">DBから取得したテーブル名やカラム名</param>
     /// <returns>C#用名称</returns>
     private string GetCSName(string name)
     {
-      var words = name.Split('_').Select(word => { return word.ToUpper()[0].ToString() + (word.Length >= 2 ? word.Substring(1).ToLower() : string.Empty); });
-      return string.Concat(words);
+      var camelCaseLength = name.Length;
+      if(UseSnakeCase)
+      {
+        camelCaseLength = name.IndexOfAny("0123456789".ToCharArray())+1;
+        if(camelCaseLength <= 0) 
+        camelCaseLength = name.Length;
+      }
+
+      var words = name.Substring(0, camelCaseLength).Split('_').Select(word => { return word.ToUpper()[0].ToString() + (word.Length >= 2 ? word.Substring(1).ToLower() : string.Empty); });
+      var result = string.Concat(words);
+      if(name.Length != camelCaseLength){
+        result += name.Substring(camelCaseLength);
+      }
+      return result;
     }
 
     /// <summary>

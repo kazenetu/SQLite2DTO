@@ -20,8 +20,9 @@ namespace Infrastructure.CSFiles
     /// </summary>
     /// <param name="classEntities">出力対象のクラスエンティティリスト</param>
     /// <param name="fileDataEntity">出力情報</param>
+    /// <param name="useSnakeCase">スネークケースのままとするか</param>
     /// <returns>出力ファイル名リスト</returns>
-    public ReadOnlyCollection<string> Generate(List<ClassEntity> classEntities, FileDataEntity fileDataEntity)
+    public ReadOnlyCollection<string> Generate(List<ClassEntity> classEntities, FileDataEntity fileDataEntity, bool useSnakeCase)
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
@@ -34,13 +35,13 @@ namespace Infrastructure.CSFiles
       {
         foreach (var classEntity in classEntities)
         {
-          var createCS = new CreateCS(classEntity, fileDataEntity.NameSpace);
+          var createCS = new CreateCS(classEntity, fileDataEntity.NameSpace, useSnakeCase);
           var filePath = Path.Combine(fileDataEntity.OutputPath, createCS.FileName);
 
           // ファイル出力
           var message = new StringBuilder();
           message.Append($"  >>{classEntity.Name}... ");
-          CreateFile(createCS, filePath, fileDataEntity.NameSpace);
+          CreateFile(createCS, filePath, fileDataEntity.NameSpace, useSnakeCase);
           message.AppendLine("finish");
 
           result.Add(message.ToString());
@@ -62,7 +63,8 @@ namespace Infrastructure.CSFiles
     /// <param name="createCS">C#ソースコード生成クラス</param>
     /// <param name="filePath">C#ファイルパス</param>
     /// <param name="nameSpace">名前空間</param>
-    private void CreateFile(CreateCS createCS, string filePath, string nameSpace)
+    /// <param name="useSnakeCase">スネークケースのままとするか</param>
+    private void CreateFile(CreateCS createCS, string filePath, string nameSpace, bool useSnakeCase)
     {
       var csSource = ((ITransformText)createCS).TransformText();
 

@@ -24,12 +24,18 @@ namespace Application.Model
     public string SQLiteFilePath { get; private set; }
 
     /// <summary>
+    /// スネークケースのままとするか
+    /// </summary>
+    public bool UseSnakeCase { get; private set; }
+
+    /// <summary>
     /// コンストラクタ
     /// </summary>
     /// <param name="nameSpace">CSファイルのクラスに設定する名前空間</param>
     /// <param name="outputPath">出力先ディレクトリパス</param>
     /// <param name="sqliteFilePath">SQLiteファイルのパス</param>
-    public InputParamModel(string nameSpace, string outputPath, string sqliteFilePath)
+    /// <param name="useSnakeCase">スネークケースのままとするか</param>
+    public InputParamModel(string nameSpace, string outputPath, string sqliteFilePath, bool useSnakeCase)
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
@@ -41,6 +47,7 @@ namespace Application.Model
       NameSpace = nameSpace;
       OutputPath = outputPath;
       SQLiteFilePath = sqliteFilePath;
+      UseSnakeCase = useSnakeCase;
     }
   }
 }
