@@ -53,7 +53,6 @@ namespace Infrastructure.DB
           break;
         case "bigint":
         case "int8":
-        case "int64":
           DataType = "long";
           break;
         case "real":

@@ -14,7 +14,8 @@ namespace Domain.CSFiles
     /// </summary>
     /// <param name="classEntities">出力対象のクラスエンティティリスト</param>
     /// <param name="fileDataEntity">出力情報</param>
+    /// <param name="useSnakeCase">スネークケースのままとするか</param>
     /// <returns>出力ファイル名リスト</returns>
-    ReadOnlyCollection<string> Generate(List<ClassEntity> classEntities, FileDataEntity fileDataEntity);
+    ReadOnlyCollection<string> Generate(List<ClassEntity> classEntities, FileDataEntity fileDataEntity, bool useSnakeCase);
   }
 }

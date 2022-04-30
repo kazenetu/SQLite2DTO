@@ -11,9 +11,11 @@ SQLiteのテーブル情報を取得し、C#のDTOクラスを作成するプロ
 * ローカル実行  
     dotnet runで実行する。  
     ```sh
-    dotnet run --project ./src/Presentation/ConsoleApp/ConsoleApp.csproj [NameSpace] [ファイル出力先] [SQliteファイルパス]
+    dotnet run --project ./src/Presentation/ConsoleApp/ConsoleApp.csproj [NameSpace] [ファイル出力先] [SQliteファイルパス] ['useSnakeCase']
     ```  
-    例：```dotnet run --project ./src/Presentation/ConsoleApp/ConsoleApp.csproj DB.Dto CSOutputs SQLiteExample/Test.db```
+    例：```dotnet run --project ./src/Presentation/ConsoleApp/ConsoleApp.csproj DB.Dto CSOutputs SQLiteExample/Test.db```  
+    ※「useSnakeCase」を入れると数値以降はテーブルの名称のままとなる。  
+    テーブルカラム「abc_ef_**1_1**」→プロパティ「AbcEf**1_1**」
 
 * Dockerコンテナでの実行  
     Dockerコンテナ上で開発環境を構築する。  
