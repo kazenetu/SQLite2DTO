@@ -29,7 +29,7 @@ namespace Domain.Exceptions
     /// <param name="messageIds">メッセージIDリスト</param>
     /// <param name="innerException">内部例外エラー</param>
     /// <remarks>Presentationで補足する場合はApplicationのExceptionModelを利用する</remarks>
-    public DomainException(ReadOnlyCollection<DomainExceptionMessage> messageIds,Exception innerException):base(innerException.Message)
+    public DomainException(ReadOnlyCollection<DomainExceptionMessage> messageIds, Exception innerException) : base(innerException.Message)
     {
       MessageIds = messageIds;
     }

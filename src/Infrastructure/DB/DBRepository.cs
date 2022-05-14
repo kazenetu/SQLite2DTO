@@ -79,23 +79,25 @@ namespace Infrastructure.DB
       // テーブル一覧取得
       var tableNames = new List<string>();
       var tableResults = Fill("select tbl_name from sqlite_master where type = 'table';");
-      foreach(DataRow row in tableResults.Rows){
+      foreach (DataRow row in tableResults.Rows)
+      {
         tableNames.Add(row["tbl_name"].ToString());
       }
 
       // テーブル情報取得
       var result = new List<Table>();
-      foreach(var tableName in tableNames)
+      foreach (var tableName in tableNames)
       {
         var tableResult = Fill($"select * from {tableName};");
         var tempTable = new Table(tableName, $"{tableName}テーブル");
 
-        foreach(DataColumn col in tableResult.Columns){
-              // カラム追加
-              var columnName = col.ColumnName;
-              var dataType = col.DataType.Name;
-              var columnComment = $"{columnName}";
-              tempTable.Columns.Add(new Column(columnName, dataType, columnComment));
+        foreach (DataColumn col in tableResult.Columns)
+        {
+          // カラム追加
+          var columnName = col.ColumnName;
+          var dataType = col.DataType.Name;
+          var columnComment = $"{columnName}";
+          tempTable.Columns.Add(new Column(columnName, dataType, columnComment));
         }
         result.Add(tempTable);
       }
@@ -111,7 +113,7 @@ namespace Infrastructure.DB
     private DataTable Fill(string sql)
     {
       // SQL未設定
-      if(sql== string.Empty)
+      if (sql == string.Empty)
       {
         return new DataTable();
       }

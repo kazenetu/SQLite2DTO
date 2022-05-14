@@ -24,7 +24,7 @@ namespace Presentation.ConsoleApp
       var nameSpace = args[0];
       var outputPath = args[1];
       var sqliteFilePath = args[2];
-      if(args.Length >= 4 && args[3] == "useSnakeCase")
+      if (args.Length >= 4 && args[3] == "useSnakeCase")
       {
         useSnakeCase = true;
       }

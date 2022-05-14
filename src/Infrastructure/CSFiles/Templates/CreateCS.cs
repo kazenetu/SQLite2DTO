@@ -52,16 +52,17 @@ namespace Infrastructure.CSFiles.Templates
     private string GetCSName(string name)
     {
       var camelCaseLength = name.Length;
-      if(UseSnakeCase)
+      if (UseSnakeCase)
       {
-        camelCaseLength = name.IndexOfAny("0123456789".ToCharArray())+1;
-        if(camelCaseLength <= 0) 
-        camelCaseLength = name.Length;
+        camelCaseLength = name.IndexOfAny("0123456789".ToCharArray()) + 1;
+        if (camelCaseLength <= 0)
+          camelCaseLength = name.Length;
       }
 
       var words = name.Substring(0, camelCaseLength).Split('_').Select(word => { return word.ToUpper()[0].ToString() + (word.Length >= 2 ? word.Substring(1).ToLower() : string.Empty); });
       var result = string.Concat(words);
-      if(name.Length != camelCaseLength){
+      if (name.Length != camelCaseLength)
+      {
         result += name.Substring(camelCaseLength);
       }
       return result;
