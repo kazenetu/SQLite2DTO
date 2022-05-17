@@ -1,8 +1,8 @@
-using System.Collections.Generic;
 using Application.Model;
 using Domain.CSFiles;
 using Domain.DB;
 using Domain.Exceptions;
+using System.Collections.Generic;
 using TinyDIContainer;
 
 namespace Application

@@ -1,5 +1,5 @@
-using System.Collections.Generic;
 using Domain.Exceptions;
+using System.Collections.Generic;
 
 namespace Application.Model
 {

@@ -1,12 +1,12 @@
 using Domain.Classes;
 using Domain.CSFiles;
 using Domain.Exceptions;
+using Infrastructure.CSFiles.Templates;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
-using Infrastructure.CSFiles.Templates;
 
 namespace Infrastructure.CSFiles
 {

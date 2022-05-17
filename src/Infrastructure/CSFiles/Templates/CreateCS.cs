@@ -1,7 +1,7 @@
+using Domain.Classes;
 using System;
 using System.Linq;
 using System.Text;
-using Domain.Classes;
 
 namespace Infrastructure.CSFiles.Templates
 {
