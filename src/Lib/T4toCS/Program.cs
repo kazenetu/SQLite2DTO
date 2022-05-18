@@ -73,10 +73,10 @@ namespace t4_practice
         result.AppendLine($"namespace {nameSpaceName}");
         result.AppendLine("{");
         result.AppendLine($"  public partial class {className}");
-        result.AppendLine("   {");
-        result.AppendLine("     public string TransformText()");
-        result.AppendLine("     {");
-        result.AppendLine("       var template = new StringBuilder();");
+        result.AppendLine("  {");
+        result.AppendLine("    public string TransformText()");
+        result.AppendLine("    {");
+        result.AppendLine("      var template = new StringBuilder();");
 
         // メソッド内部の組み立て
         var indentIndex = 0;
@@ -97,7 +97,7 @@ namespace t4_practice
               if (Regex.Matches(outputLine, oneLineCodeReg).Count > 0)
               {
                 result.Append(new string(' ', indentIndex * 2));
-                result.AppendLine($"       {GetRegex(outputLineTrimStart, oneLineCodeReg, "$1")}");
+                result.AppendLine($"      {GetRegex(outputLineTrimStart, oneLineCodeReg, "$1")}");
                 continue;
               }
 
@@ -121,7 +121,7 @@ namespace t4_practice
                 }
 
                 result.Append(new string(' ', indentIndex * 2));
-                result.AppendLine($"       {outputLineTrimStart}");
+                result.AppendLine($"      {outputLineTrimStart}");
 
                 if (outputLineTrimStart.IndexOf("{") >= 0)
                 {
@@ -140,12 +140,12 @@ namespace t4_practice
             outputLine = outputLine.Replace("{", "{{").Replace("}", "}}");
           }
           result.Append(new string(' ', indentIndex * 2));
-          result.AppendLine($"       template.AppendLine($\"{outputLine}\");");
+          result.AppendLine($"      template.AppendLine($\"{outputLine}\");");
         }
 
-        result.AppendLine("       return template.ToString();");
-        result.AppendLine("     }");
-        result.AppendLine("   }");
+        result.AppendLine("      return template.ToString();");
+        result.AppendLine("    }");
+        result.AppendLine("  }");
         result.AppendLine("}");
 
         // namespace、class、methodのソースコードの文字列を返す
