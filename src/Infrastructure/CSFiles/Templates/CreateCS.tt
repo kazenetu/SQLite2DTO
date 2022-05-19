@@ -14,7 +14,7 @@ namespace <#= NameSpace #>
     }
 
     <# 
-    foreach(var property in classEntity.Properties)
+    foreach (var property in classEntity.Properties)
     {
     #>
     <#= GetCSComment(property.Comment, "    ") #>
