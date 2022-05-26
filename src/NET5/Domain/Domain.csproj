@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../NET6/Domain/**/*.cs" Exclude="../../NET6/Domain/obj/**/*.cs"/>
+  </ItemGroup>
+
+</Project>

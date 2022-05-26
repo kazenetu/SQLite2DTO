@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>t4_practice</RootNamespace>
+
+    <OutputPath>bin/</OutputPath>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../../NET6/Lib/T4toCS/**/*.cs" Exclude="../../../NET6/Lib/T4toCS/obj/**/*.cs"/>
+  </ItemGroup>
+  
+
+</Project>

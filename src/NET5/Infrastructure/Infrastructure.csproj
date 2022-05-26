@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="5.0.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../../NET6/Infrastructure/**/*.cs" Exclude="../../NET6/Infrastructure/obj/**/*.cs"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Domain/Domain.csproj" />
+  </ItemGroup>
+
+  <!-- T4からC#ソースコードを生成 -->
+  <ItemGroup>
+    <TextTemplate Include="**/*.tt" />
+    <Generated Include="**/*.Generated.cs" />
+  </ItemGroup>
+
+  <!-- T4toCSが未ビルドの場合はビルド -->
+  <Target Name="CreateTool" BeforeTargets="TextTemplateTransform" Condition="!Exists('../Lib/T4toCS/bin/T4toCS.dll')">
+      <Exec WorkingDirectory="../Lib/T4toCS" Command="dotnet build" />
+  </Target>
+
+  <!-- T4toCSを使ってT4ファイルからCSソースファイルを生成 -->
+  <Target Name="TextTemplateTransform" BeforeTargets="BeforeBuild">
+    <Exec WorkingDirectory="$(ProjectDir)" Command="dotnet ../Lib/T4toCS/bin/T4toCS.dll %(TextTemplate.Identity) Infrastructure.CSFiles.Templates %(TextTemplate.Filename) CSFiles/Templates/%(TextTemplate.Filename).Generated.cs" />
+  </Target>
+
+  <!-- 自動生成したファイルを削除 -->
+  <Target Name="TextTemplateClean" AfterTargets="Clean">
+    <Delete Files="@(Generated)" />
+  </Target>
+
+</Project>
