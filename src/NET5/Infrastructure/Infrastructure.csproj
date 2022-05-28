@@ -9,6 +9,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="../../NET6/Infrastructure/**/*.cs" Exclude="../../NET6/Infrastructure/obj/**/*.cs"/>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="../Domain/Domain.csproj" />
   </ItemGroup>
 

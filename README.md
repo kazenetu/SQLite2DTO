@@ -5,15 +5,20 @@ SQLiteのテーブルから.NET用のDTOを作る
 SQLiteのテーブル情報を取得し、C#のDTOクラスを作成するプログラムです。
 
 ## 実行環境
+* .NET 6  
 * .NET 5  
 
 ## 実行方法
 * ローカル実行  
     dotnet runで実行する。  
     ```sh
-    dotnet run --project ./src/Presentation/ConsoleApp/ConsoleApp.csproj [NameSpace] [ファイル出力先] [SQliteファイルパス] ['useSnakeCase']
+    --.NET6
+    dotnet run --project ./src/NET6/Presentation/ConsoleApp/ConsoleApp.csproj [NameSpace] [ファイル出力先] [SQliteファイルパス] ['useSnakeCase']
+
+    --.NET5
+    dotnet run --project ./src/NET5/Presentation/ConsoleApp/ConsoleApp.csproj [NameSpace] [ファイル出力先] [SQliteファイルパス] ['useSnakeCase']
     ```  
-    例：```dotnet run --project ./src/Presentation/ConsoleApp/ConsoleApp.csproj DB.Dto CSOutputs SQLiteExample/Test.db```  
+    例：```dotnet run --project ./src/NET6/Presentation/ConsoleApp/ConsoleApp.csproj DB.Dto CSOutputs SQLiteExample/Test.db```  
     ※「useSnakeCase」を入れると数値以降はテーブルの名称のままとなる。  
     テーブルカラム「abc_ef_**1_1**」→プロパティ「AbcEf**1_1**」
 
@@ -47,7 +52,11 @@ SQLiteのテーブル情報を取得し、C#のDTOクラスを作成するプロ
       1. コンテナ内で実行 
           1. dotnet runで実行する。
               ```sh
-              dotnet run --project ./src/Presentation/ConsoleApp/ConsoleApp.csproj DB.Dto CSOutputs SQLiteExample/Test.db 
+              --.NET6
+              dotnet run --project ./src/NET6/Presentation/ConsoleApp/ConsoleApp.csproj DB.Dto CSOutputs SQLiteExample/Test.db 
+
+              --.NET5
+              dotnet run --project ./src/NET5/Presentation/ConsoleApp/ConsoleApp.csproj DB.Dto CSOutputs SQLiteExample/Test.db 
               ```
 
           1. コンテナから離脱する。

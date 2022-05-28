@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../NET6/Application/**/*.cs" Exclude="../../NET6/Application/obj/**/*.cs"/>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../Domain/Domain.csproj" />
+    <ProjectReference Include="../Lib/TinyDIContainer/TinyDIContainer.csproj" />
+  </ItemGroup>
+</Project>

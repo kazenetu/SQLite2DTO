@@ -8,5 +8,10 @@
     <OutputPath>bin/</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../../../NET6/Lib/T4toCS/**/*.cs" Exclude="../../../NET6/Lib/T4toCS/obj/**/*.cs"/>
+  </ItemGroup>
   
+
 </Project>
