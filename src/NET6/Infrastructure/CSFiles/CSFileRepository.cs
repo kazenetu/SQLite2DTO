@@ -35,6 +35,12 @@ namespace Infrastructure.CSFiles
       {
         foreach (var classEntity in classEntities)
         {
+          // フォルダの存在確認とフォルダ作成
+          if (!Directory.Exists(fileDataEntity.OutputPath))
+          {
+            Directory.CreateDirectory(fileDataEntity.OutputPath);
+          }
+
           var createCS = new CreateCS(classEntity, fileDataEntity.NameSpace, useSnakeCase);
           var filePath = Path.Combine(fileDataEntity.OutputPath, createCS.FileName);
 
