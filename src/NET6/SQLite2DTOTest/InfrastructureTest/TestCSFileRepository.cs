@@ -37,7 +37,7 @@ namespace PostgreSQL2DTOTest.InfrastructureTest
     /// </summary>
     public void Dispose()
     {
-      Directory.Delete("CSOutputs", true);
+      //Directory.Delete("CSOutputs", true);
     }
 
     [Fact]
@@ -91,6 +91,106 @@ namespace PostgreSQL2DTOTest.InfrastructureTest
       Assert.Equal(2, fileNames.Count);
       Assert.Equal($"{Path.Combine(fileDataEntity.OutputPath,"MTest.cs")}", fileNames[0]);
       Assert.Equal($"{Path.Combine(fileDataEntity.OutputPath,"TTest.cs")}", fileNames[1]);
+    }
+
+    [Fact]
+    public void CheckFileClassNotUseSnake()
+    {
+      var outputPathBase = Environment.CurrentDirectory;
+      var mockDBRepository = new MockDBRepository();
+      var classEntities = mockDBRepository.GetClasses(DBParameterEntity.Create("SQLitePath"));
+      var fileDataEntity = FileDataEntity.Create(Path.Combine(outputPathBase, "CSOutputs"), "DB.Dto");
+      var useSnakeCase = false;
+
+      repository.Generate(classEntities, fileDataEntity, useSnakeCase);
+
+      var fileNames = Directory.GetFiles(fileDataEntity.OutputPath).Where(filename => filename == $"{Path.Combine(fileDataEntity.OutputPath, "MTest.cs")}").ToList();
+      Assert.Single(fileNames);
+
+      var actual = string.Empty;
+      using (StreamReader sr = new StreamReader(fileNames[0]))
+      {
+        actual = sr.ReadToEnd();
+      }
+
+      var expected = @"using System.ComponentModel.DataAnnotations.Schema;
+namespace DB.Dto
+{
+  /// <summary>
+  /// マスタテーブル
+  /// </summary>
+  public class MTest
+  {
+    public MTest()
+    {
+    }
+    
+    /// <summary>
+    /// intになる
+    /// </summary>
+    [Column(""int_1"")]
+    public int Int1{set; get;}
+    
+    /// <summary>
+    /// Dateになる
+    /// </summary>
+    [Column(""Date_1_1"")]
+    public DateTime Date11{set; get;}
+  }
+}
+" + "\n";
+
+      Assert.Equal(expected, actual);
+    }
+
+    [Fact]
+    public void CheckFileClassUseSnake()
+    {
+      var outputPathBase = Environment.CurrentDirectory;
+      var mockDBRepository = new MockDBRepository();
+      var classEntities = mockDBRepository.GetClasses(DBParameterEntity.Create("SQLitePath"));
+      var fileDataEntity = FileDataEntity.Create(Path.Combine(outputPathBase, "CSOutputs"), "DB.Dto");
+      var useSnakeCase = true;
+
+      repository.Generate(classEntities, fileDataEntity, useSnakeCase);
+
+      var fileNames = Directory.GetFiles(fileDataEntity.OutputPath).Where(filename => filename == $"{Path.Combine(fileDataEntity.OutputPath, "MTest.cs")}").ToList();
+      Assert.Single(fileNames);
+
+      var actual = string.Empty;
+      using (StreamReader sr = new StreamReader(fileNames[0]))
+      {
+        actual = sr.ReadToEnd();
+      }
+
+      var expected = @"using System.ComponentModel.DataAnnotations.Schema;
+namespace DB.Dto
+{
+  /// <summary>
+  /// マスタテーブル
+  /// </summary>
+  public class MTest
+  {
+    public MTest()
+    {
+    }
+    
+    /// <summary>
+    /// intになる
+    /// </summary>
+    [Column(""int_1"")]
+    public int Int1{set; get;}
+    
+    /// <summary>
+    /// Dateになる
+    /// </summary>
+    [Column(""Date_1_1"")]
+    public DateTime Date1_1{set; get;}
+  }
+}
+";
+
+      Assert.Equal(expected, actual);
     }
   }
 }
