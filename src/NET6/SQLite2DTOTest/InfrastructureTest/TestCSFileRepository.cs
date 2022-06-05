@@ -28,8 +28,6 @@ namespace PostgreSQL2DTOTest.InfrastructureTest
     public TestCSFileRepository()
     {
       repository = new CSFileRepository();
-
-      Directory.CreateDirectory("CSOutputs");
     }
 
     /// <summary>
@@ -37,7 +35,6 @@ namespace PostgreSQL2DTOTest.InfrastructureTest
     /// </summary>
     public void Dispose()
     {
-      //Directory.Delete("CSOutputs", true);
     }
 
     [Fact]
@@ -77,9 +74,10 @@ namespace PostgreSQL2DTOTest.InfrastructureTest
     [Fact]
     public void CreateFiles()
     {
+      var csOutputName = "CSOutputs";
       var mockDBRepository = new MockDBRepository();
       var classEntities = mockDBRepository.GetClasses(DBParameterEntity.Create("SQLitePath"));
-      var fileDataEntity = FileDataEntity.Create("CSOutputs", "DB.Dto");
+      var fileDataEntity = FileDataEntity.Create(csOutputName, "DB.Dto");
       var useSnakeCase = false;
 
       var messages = repository.Generate(classEntities, fileDataEntity, useSnakeCase);
@@ -91,15 +89,19 @@ namespace PostgreSQL2DTOTest.InfrastructureTest
       Assert.Equal(2, fileNames.Count);
       Assert.Equal($"{Path.Combine(fileDataEntity.OutputPath,"MTest.cs")}", fileNames[0]);
       Assert.Equal($"{Path.Combine(fileDataEntity.OutputPath,"TTest.cs")}", fileNames[1]);
+      
+      // テスト終了後にフォルダ削除
+      Directory.Delete(csOutputName, true);
     }
 
     [Fact]
     public void CheckFileClassNotUseSnake()
     {
-      var outputPathBase = Environment.CurrentDirectory;
+      var csOutputName = "CSOutputs2";
+
       var mockDBRepository = new MockDBRepository();
       var classEntities = mockDBRepository.GetClasses(DBParameterEntity.Create("SQLitePath"));
-      var fileDataEntity = FileDataEntity.Create(Path.Combine(outputPathBase, "CSOutputs"), "DB.Dto");
+      var fileDataEntity = FileDataEntity.Create(csOutputName, "DB.Dto");
       var useSnakeCase = false;
 
       repository.Generate(classEntities, fileDataEntity, useSnakeCase);
@@ -138,18 +140,22 @@ namespace DB.Dto
     public DateTime Date11{set; get;}
   }
 }
-" + "\n";
+";
 
       Assert.Equal(expected, actual);
+
+      // テスト終了後にフォルダ削除
+      Directory.Delete(csOutputName, true);
     }
 
     [Fact]
     public void CheckFileClassUseSnake()
     {
-      var outputPathBase = Environment.CurrentDirectory;
+      var csOutputName = "CSOutputs3";
+
       var mockDBRepository = new MockDBRepository();
       var classEntities = mockDBRepository.GetClasses(DBParameterEntity.Create("SQLitePath"));
-      var fileDataEntity = FileDataEntity.Create(Path.Combine(outputPathBase, "CSOutputs"), "DB.Dto");
+      var fileDataEntity = FileDataEntity.Create(csOutputName, "DB.Dto");
       var useSnakeCase = true;
 
       repository.Generate(classEntities, fileDataEntity, useSnakeCase);
@@ -191,6 +197,9 @@ namespace DB.Dto
 ";
 
       Assert.Equal(expected, actual);
+
+      // テスト終了後にフォルダ削除
+      Directory.Delete(csOutputName, true);
     }
   }
 }
