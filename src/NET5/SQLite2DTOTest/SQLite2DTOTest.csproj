@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="../../NET6/SQLite2DTOTest/**/*.cs" Exclude="../../NET6/SQLite2DTOTest/obj/**/*.cs"/>
+    <Compile Include="../../NET6/SQLite2DTOTest/**/*.cs" Exclude="../../NET6/SQLite2DTOTest/obj/**/*.cs;../../NET6/SQLite2DTOTest/bin/**/*.cs"/>
   </ItemGroup>
 
   <ItemGroup>
