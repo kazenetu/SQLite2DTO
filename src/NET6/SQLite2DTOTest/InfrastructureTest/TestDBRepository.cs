@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace PostgreSQL2DTOTest.InfrastructureTest
+namespace SQLite2DTOTest.InfrastructureTest
 {
   /// <summary>
   /// DBリポジトリのテスト

@@ -3,14 +3,14 @@ using Domain.CSFiles;
 using Domain.DB;
 using Domain.Exceptions;
 using Infrastructure.CSFiles;
-using PostgreSQL2DTOTest.Shared;
+using SQLite2DTOTest.Shared;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Xunit;
 
-namespace PostgreSQL2DTOTest.InfrastructureTest
+namespace SQLite2DTOTest.InfrastructureTest
 {
   /// <summary>
   /// CSファイル出力リポジトリのテスト

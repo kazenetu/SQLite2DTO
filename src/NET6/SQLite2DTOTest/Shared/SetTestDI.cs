@@ -2,7 +2,7 @@ using Domain.CSFiles;
 using Domain.DB;
 using TinyDIContainer;
 
-namespace PostgreSQL2DTOTest.Shared
+namespace SQLite2DTOTest.Shared
 {
   /// <summary>
   /// テスト用DI設定

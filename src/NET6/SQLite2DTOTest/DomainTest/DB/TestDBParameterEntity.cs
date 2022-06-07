@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using Xunit;
 
-namespace PostgreSQL2DTOTest.Domain.DB
+namespace SQLite2DTOTest.Domain.DB
 {
   /// <summary>
   /// DB接続パラメータエンティティのテスト
@@ -31,10 +31,10 @@ namespace PostgreSQL2DTOTest.Domain.DB
       string sqlitePath = null;
 
       var ex = Assert.ThrowsAny<DomainException>(() => DBParameterEntity.Create(sqlitePath));
-      Assert.Single(ex.MessageIds);
+      Assert.Single(ex.Messages);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.MessageIds[0].MessageID);
-      Assert.Equal("sqliteFilePath[]", ex.MessageIds[0].Target);
+      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal("sqliteFilePath[]", ex.Messages[0].Target);
     }
 
     [Fact]

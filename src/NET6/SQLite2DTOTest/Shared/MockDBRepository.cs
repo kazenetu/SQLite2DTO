@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using Infrastructure.DB;
 
-namespace PostgreSQL2DTOTest.Shared
+namespace SQLite2DTOTest.Shared
 {
   /// <summary>
   /// DBモックリポジトリ

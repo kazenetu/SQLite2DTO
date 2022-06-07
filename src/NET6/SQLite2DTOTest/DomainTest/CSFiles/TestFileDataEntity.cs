@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using Xunit;
 
-namespace PostgreSQL2DTOTest.Domain.CSFiles
+namespace SQLite2DTOTest.Domain.CSFiles
 {
   /// <summary>
   /// ファイル作成パラメータエンティティのテスト
@@ -32,13 +32,13 @@ namespace PostgreSQL2DTOTest.Domain.CSFiles
       string nameSpace = null;
 
       var ex = Assert.ThrowsAny<DomainException>(() => FileDataEntity.Create(outputPath, nameSpace));
-      Assert.Equal(2, ex.MessageIds.Count);
+      Assert.Equal(2, ex.Messages.Count);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.MessageIds[0].MessageID);
-      Assert.Equal("outputPath[]", ex.MessageIds[0].Target);
+      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal("outputPath[]", ex.Messages[0].Target);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.MessageIds[1].MessageID);
-      Assert.Equal("nameSpace[]", ex.MessageIds[1].Target);
+      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[1].MessageID);
+      Assert.Equal("nameSpace[]", ex.Messages[1].Target);
     }
 
     [Fact]
@@ -48,10 +48,10 @@ namespace PostgreSQL2DTOTest.Domain.CSFiles
       string nameSpace = "NameSpace";
 
       var ex = Assert.ThrowsAny<DomainException>(() => FileDataEntity.Create(outputPath, nameSpace));
-      Assert.Single(ex.MessageIds);
+      Assert.Single(ex.Messages);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.MessageIds[0].MessageID);
-      Assert.Equal("outputPath[]", ex.MessageIds[0].Target);
+      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal("outputPath[]", ex.Messages[0].Target);
     }
 
     [Fact]
@@ -61,10 +61,10 @@ namespace PostgreSQL2DTOTest.Domain.CSFiles
       string nameSpace = null;
 
       var ex = Assert.ThrowsAny<DomainException>(() => FileDataEntity.Create(outputPath, nameSpace));
-      Assert.Single(ex.MessageIds);
+      Assert.Single(ex.Messages);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.MessageIds[0].MessageID);
-      Assert.Equal("nameSpace[]", ex.MessageIds[0].Target);
+      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal("nameSpace[]", ex.Messages[0].Target);
     }
 
     [Fact]
