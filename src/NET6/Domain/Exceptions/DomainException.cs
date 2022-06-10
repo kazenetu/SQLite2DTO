@@ -14,6 +14,11 @@ namespace Domain.Exceptions
     public ReadOnlyCollection<DomainExceptionMessage> MessageIds { get; private set; }
 
     /// <summary>
+    /// メッセージリスト
+    /// </summary>
+    public ReadOnlyCollection<DomainExceptionMessage> Messages { get; private set; }
+
+    /// <summary>
     /// コンストラクタ
     /// </summary>
     /// <param name="messageIds">メッセージIDリスト</param>
@@ -21,6 +26,7 @@ namespace Domain.Exceptions
     public DomainException(ReadOnlyCollection<DomainExceptionMessage> messageIds)
     {
       MessageIds = messageIds;
+      Messages = messageIds;
     }
 
     /// <summary>
@@ -32,6 +38,7 @@ namespace Domain.Exceptions
     public DomainException(ReadOnlyCollection<DomainExceptionMessage> messageIds, Exception innerException) : base(innerException.Message)
     {
       MessageIds = messageIds;
+      Messages = messageIds;
     }
   }
 }
