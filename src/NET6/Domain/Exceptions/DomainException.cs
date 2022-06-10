@@ -11,6 +11,7 @@ namespace Domain.Exceptions
     /// <summary>
     /// メッセージIDリスト
     /// </summary>
+    [Obsolete]
     public ReadOnlyCollection<DomainExceptionMessage> MessageIds { get; private set; }
 
     /// <summary>
