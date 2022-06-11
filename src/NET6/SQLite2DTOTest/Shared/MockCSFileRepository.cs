@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace SQLite2DTOTest.Shared
+namespace PostgreSQL2DTOTest.Shared
 {
   /// <summary>
   /// CSファイル出力モックリポジトリ

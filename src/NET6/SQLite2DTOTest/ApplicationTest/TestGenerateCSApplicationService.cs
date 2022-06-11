@@ -1,11 +1,11 @@
 using Application;
 using Application.Model;
 using Domain.Exceptions;
-using SQLite2DTOTest.Shared;
+using PostgreSQL2DTOTest.Shared;
 using System;
 using Xunit;
 
-namespace SQLite2DTOTest.ApplicationTest
+namespace PostgreSQL2DTOTest.ApplicationTest
 {
   /// <summary>
   /// CSファイル作成アプリケーションサービスのテスト

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using Xunit;
 
-namespace SQLite2DTOTest.Domain.CSFiles
+namespace PostgreSQL2DTOTest.Domain.CSFiles
 {
   /// <summary>
   /// ファイル作成パラメータエンティティのテスト
