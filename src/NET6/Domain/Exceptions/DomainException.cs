@@ -9,12 +9,6 @@ namespace Domain.Exceptions
   public class DomainException : Exception
   {
     /// <summary>
-    /// メッセージIDリスト
-    /// </summary>
-    [Obsolete]
-    public ReadOnlyCollection<DomainExceptionMessage> MessageIds { get; private set; }
-
-    /// <summary>
     /// メッセージリスト
     /// </summary>
     public ReadOnlyCollection<DomainExceptionMessage> Messages { get; private set; }
@@ -22,24 +16,22 @@ namespace Domain.Exceptions
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    /// <param name="messageIds">メッセージIDリスト</param>
+    /// <param name="messages">メッセージリスト</param>
     /// <remarks>Presentationで補足する場合はApplicationのExceptionModelを利用する</remarks>
-    public DomainException(ReadOnlyCollection<DomainExceptionMessage> messageIds)
+    public DomainException(ReadOnlyCollection<DomainExceptionMessage> messages)
     {
-      MessageIds = messageIds;
-      Messages = messageIds;
+      Messages = messages;
     }
 
     /// <summary>
     /// コンストラクタ
     /// </summary>
-    /// <param name="messageIds">メッセージIDリスト</param>
+    /// <param name="messages">メッセージリスト</param>
     /// <param name="innerException">内部例外エラー</param>
     /// <remarks>Presentationで補足する場合はApplicationのExceptionModelを利用する</remarks>
-    public DomainException(ReadOnlyCollection<DomainExceptionMessage> messageIds, Exception innerException) : base(innerException.Message)
+    public DomainException(ReadOnlyCollection<DomainExceptionMessage> messages, Exception innerException) : base(innerException.Message)
     {
-      MessageIds = messageIds;
-      Messages = messageIds;
+      Messages = messages;
     }
   }
 }
