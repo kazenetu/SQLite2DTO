@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using Xunit;
 
-namespace SQLite2DTOTest.Domain.DB
+namespace PostgreSQL2DTOTest.Domain.DB
 {
   /// <summary>
   /// DB接続パラメータエンティティのテスト

@@ -53,9 +53,9 @@ namespace Application.Model
       }
       else
       {
-        // ドメインレイヤー用例外の場合はIDからメッセージを取得する
+        // ドメインレイヤー用例外の場合はメッセージを取得する
         var result = new StringBuilder();
-        foreach (var item in domainException.MessageIds)
+        foreach (var item in domainException.Messages)
         {
           result.AppendLine(GetDomainMessage(item));
         }
@@ -66,22 +66,22 @@ namespace Application.Model
     /// <summary>
     /// 例外メッセージを返す
     /// </summary>
-    /// <param name="targetAndMessageID">対象項目とメッセージIDの文字列</param>
+    /// <param name="message">対象項目とメッセージIDの文字列</param>
     /// <returns>例外メッセージ</returns>
-    private string GetDomainMessage(DomainExceptionMessage targetAndMessageID)
+    private string GetDomainMessage(DomainExceptionMessage message)
     {
-      switch (targetAndMessageID.MessageID)
+      switch (message.MessageID)
       {
         case DomainExceptionMessage.ExceptionType.Empty:
-          return $"Empty: {targetAndMessageID.Target}";
+          return $"Empty: {message.Target}";
         case DomainExceptionMessage.ExceptionType.DBError:
-          return $"DBError: {targetAndMessageID.Target}";
+          return $"DBError: {message.Target}";
         case DomainExceptionMessage.ExceptionType.ParameterError:
-          return $"parameterError: {targetAndMessageID.Target}";
+          return $"parameterError: {message.Target}";
         case DomainExceptionMessage.ExceptionType.FileOutputError:
-          return $"OutputFileError: {targetAndMessageID.Target}";
+          return $"OutputFileError: {message.Target}";
         default:
-          return $"UnknownError: {targetAndMessageID.Target}";
+          return $"UnknownError: {message.Target}";
       }
     }
   }

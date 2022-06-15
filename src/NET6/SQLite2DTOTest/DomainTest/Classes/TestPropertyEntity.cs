@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System;
 using Xunit;
 
-namespace SQLite2DTOTest.Domain.Classes
+namespace PostgreSQL2DTOTest.Domain.Classes
 {
   /// <summary>
   /// プロパティエンティティのテスト
