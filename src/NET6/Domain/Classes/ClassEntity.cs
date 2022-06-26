@@ -13,19 +13,19 @@ namespace Domain.Classes
     /// 名称
     /// </summary>
     /// <value>プロパティ名</value>
-    public string Name { get; private set; }
+    public string Name { get; init; }
 
     /// <summary>
     /// コメント
     /// </summary>
     /// <value>コメント文字列</value>
-    public string Comment { get; private set; }
+    public string Comment { get; init; }
 
     /// <summary>
     /// プロパティリスト
     /// </summary>
     /// <returns>プロパティリスト</returns>
-    public ReadOnlyCollection<PropertyEntity> Properties { get; private set; }
+    public ReadOnlyCollection<PropertyEntity> Properties { get; init; }
 
     /// <summary>
     /// 非公開コンストラクタ

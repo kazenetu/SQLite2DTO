@@ -10,7 +10,7 @@ namespace Application.Model
     /// <summary>
     /// 生成結果メッセージ
     /// </summary>
-    public ReadOnlyCollection<string> Messages { get; private set; }
+    public ReadOnlyCollection<string> Messages { get; init; }
 
     /// <summary>
     /// コンストラクタ

@@ -25,12 +25,12 @@ namespace Domain.Exceptions
     /// <summary>
     /// 対象項目
     /// </summary>
-    public string Target { get; private set; }
+    public string Target { get; init; }
 
     /// <summary>
     /// メッセージID
     /// </summary>
-    public ExceptionType MessageID { get; private set; }
+    public ExceptionType MessageID { get; init; }
 
     /// <summary>
     /// コンストラクタ

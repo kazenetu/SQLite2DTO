@@ -11,12 +11,12 @@ namespace Domain.CSFiles
     /// <summary>
     /// 出力パス
     /// </summary>
-    public string OutputPath { get; private set; }
+    public string OutputPath { get; init; }
 
     /// <summary>
     /// 名前空間
     /// </summary>
-    public string NameSpace { get; private set; }
+    public string NameSpace { get; init; }
 
     /// <summary>
     /// 非公開コンストラクタ

@@ -11,7 +11,7 @@ namespace Domain.DB
     /// <summary>
     /// DB接続情報：SQLiteファイルのパス
     /// </summary>
-    public string SQLiteFilePath { get; private set; }
+    public string SQLiteFilePath { get; init; }
 
     /// <summary>
     /// 非公開コンストラクタ

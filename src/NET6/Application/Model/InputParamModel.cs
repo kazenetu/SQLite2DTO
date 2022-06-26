@@ -11,22 +11,22 @@ namespace Application.Model
     /// <summary>
     /// CSファイルのクラスに設定する名前空間
     /// </summary>
-    public string NameSpace { get; private set; }
+    public string NameSpace { get; init; }
 
     /// <summary>
     /// CSファイル出力先ディレクトリパス
     /// </summary>
-    public string OutputPath { get; private set; }
+    public string OutputPath { get; init; }
 
     /// <summary>
     /// DB接続情報：SQLiteファイルのパス
     /// </summary>
-    public string SQLiteFilePath { get; private set; }
+    public string SQLiteFilePath { get; init; }
 
     /// <summary>
     /// スネークケースのままとするか
     /// </summary>
-    public bool UseSnakeCase { get; private set; }
+    public bool UseSnakeCase { get; init; }
 
     /// <summary>
     /// コンストラクタ

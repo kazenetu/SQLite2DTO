@@ -12,19 +12,19 @@ namespace Domain.Classes
     /// 名称
     /// </summary>
     /// <value>プロパティ名</value>
-    public string Name { get; private set; }
+    public string Name { get; init; }
 
     /// <summary>
     /// 型名
     /// </summary>
     /// <value>型名称</value>
-    public string TypeName { get; private set; }
+    public string TypeName { get; init; }
 
     /// <summary>
     /// コメント
     /// </summary>
     /// <value>コメント文字列</value>
-    public string Comment { get; private set; }
+    public string Comment { get; init; }
 
     /// <summary>
     /// 非公開コンストラクタ
