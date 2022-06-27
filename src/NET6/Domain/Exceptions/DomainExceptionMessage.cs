@@ -6,11 +6,6 @@ namespace Domain.Exceptions
   public class DomainExceptionMessage
   {
     /// <summary>
-    /// 区切り文字
-    /// </summary>
-    public const string Delimiter = ":";
-
-    /// <summary>
     /// 例外種別
     /// </summary>
     public enum ExceptionType
