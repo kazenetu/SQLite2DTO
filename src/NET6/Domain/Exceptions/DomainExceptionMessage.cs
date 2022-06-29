@@ -19,6 +19,7 @@ namespace Domain.Exceptions
     /// <summary>
     /// 例外種別
     /// </summary>
+    [System.Obsolete]
     public enum ExceptionType
     {
       Empty,
