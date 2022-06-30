@@ -45,9 +45,9 @@ namespace Domain.Classes
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
-      if (string.IsNullOrEmpty(name)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(name)}[{name}]", DomainExceptionMessage.ExceptionType.Empty));
-      if (string.IsNullOrEmpty(comment)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(comment)}[{comment}]", DomainExceptionMessage.ExceptionType.Empty));
-      if (properties.Count == 0) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(properties)}[{properties}]", DomainExceptionMessage.ExceptionType.Empty));
+      if (string.IsNullOrEmpty(name)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(name)}[{name}]", ExceptionType.Empty));
+      if (string.IsNullOrEmpty(comment)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(comment)}[{comment}]", ExceptionType.Empty));
+      if (properties.Count == 0) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(properties)}[{properties}]", ExceptionType.Empty));
       if (exceptionMessages.Count > 0) throw new DomainException(exceptionMessages.AsReadOnly());
 
       return new ClassEntity()

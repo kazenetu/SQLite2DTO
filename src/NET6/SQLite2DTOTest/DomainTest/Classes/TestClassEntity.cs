@@ -1,13 +1,13 @@
 using Domain.Classes;
 using Domain.Exceptions;
 using Domain.DB;
-using PostgreSQL2DTOTest.Shared;
+using SQLite2DTOTest.Shared;
 using System;
 using System.Linq;
 using System.Collections.Generic;
 using Xunit;
 
-namespace PostgreSQL2DTOTest.Domain.Classes
+namespace SQLite2DTOTest.Domain.Classes
 {
   /// <summary>
   /// クラスエンティティのテスト
@@ -49,13 +49,13 @@ namespace PostgreSQL2DTOTest.Domain.Classes
       var ex = Assert.ThrowsAny<DomainException>(() => ClassEntity.Create(name, comment, properties.AsReadOnly()));
       Assert.Equal(3, ex.Messages.Count);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal(ExceptionType.Empty, ex.Messages[0].MessageID);
       Assert.Equal("name[]", ex.Messages[0].Target);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[1].MessageID);
+      Assert.Equal(ExceptionType.Empty, ex.Messages[1].MessageID);
       Assert.Equal("comment[]", ex.Messages[1].Target);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[2].MessageID);
+      Assert.Equal(ExceptionType.Empty, ex.Messages[2].MessageID);
       Assert.Equal($"properties[{properties.AsReadOnly()}]", ex.Messages[2].Target);
     }
 
@@ -69,7 +69,7 @@ namespace PostgreSQL2DTOTest.Domain.Classes
       var ex = Assert.ThrowsAny<DomainException>(() => ClassEntity.Create(name, comment, properties.AsReadOnly()));
       Assert.Single(ex.Messages);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal(ExceptionType.Empty, ex.Messages[0].MessageID);
       Assert.Equal("name[]", ex.Messages[0].Target);
     }
 
@@ -83,7 +83,7 @@ namespace PostgreSQL2DTOTest.Domain.Classes
       var ex = Assert.ThrowsAny<DomainException>(() => ClassEntity.Create(name, comment, properties.AsReadOnly()));
       Assert.Single(ex.Messages);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal(ExceptionType.Empty, ex.Messages[0].MessageID);
       Assert.Equal("comment[]", ex.Messages[0].Target);
     }
 
@@ -97,7 +97,7 @@ namespace PostgreSQL2DTOTest.Domain.Classes
       var ex = Assert.ThrowsAny<DomainException>(() => ClassEntity.Create(name, comment, properties.AsReadOnly()));
       Assert.Single(ex.Messages);
 
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal(ExceptionType.Empty, ex.Messages[0].MessageID);
       Assert.Equal($"properties[{properties.AsReadOnly()}]", ex.Messages[0].Target);
     }
 

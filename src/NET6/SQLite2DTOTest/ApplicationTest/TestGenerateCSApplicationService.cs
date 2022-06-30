@@ -1,11 +1,11 @@
 using Application;
 using Application.Model;
 using Domain.Exceptions;
-using PostgreSQL2DTOTest.Shared;
+using SQLite2DTOTest.Shared;
 using System;
 using Xunit;
 
-namespace PostgreSQL2DTOTest.ApplicationTest
+namespace SQLite2DTOTest.ApplicationTest
 {
   /// <summary>
   /// CSファイル作成アプリケーションサービスのテスト
@@ -38,7 +38,7 @@ namespace PostgreSQL2DTOTest.ApplicationTest
     {
       var ex = Assert.ThrowsAny<DomainException>(() => applicationService.GenerateCSFileFromDB(null));
       Assert.Single(ex.Messages);
-      Assert.Equal(DomainExceptionMessage.ExceptionType.Empty, ex.Messages[0].MessageID);
+      Assert.Equal(ExceptionType.Empty, ex.Messages[0].MessageID);
       Assert.Equal("inputParamModel[]", ex.Messages[0].Target);
     }
 

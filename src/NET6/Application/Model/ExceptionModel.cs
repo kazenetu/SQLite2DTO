@@ -72,13 +72,13 @@ namespace Application.Model
     {
       switch (message.MessageID)
       {
-        case DomainExceptionMessage.ExceptionType.Empty:
+        case ExceptionType.Empty:
           return $"Empty: {message.Target}";
-        case DomainExceptionMessage.ExceptionType.DBError:
+        case ExceptionType.DBError:
           return $"DBError: {message.Target}";
-        case DomainExceptionMessage.ExceptionType.ParameterError:
+        case ExceptionType.ParameterError:
           return $"parameterError: {message.Target}";
-        case DomainExceptionMessage.ExceptionType.FileOutputError:
+        case ExceptionType.FileOutputError:
           return $"OutputFileError: {message.Target}";
         default:
           return $"UnknownError: {message.Target}";

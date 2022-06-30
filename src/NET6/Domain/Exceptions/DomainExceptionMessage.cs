@@ -19,8 +19,9 @@ namespace Domain.Exceptions
     /// <summary>
     /// 例外種別
     /// </summary>
+    /// <remark>一時的に改名</remark>
     [System.Obsolete]
-    public enum ExceptionType
+    public enum ExceptionTypes
     {
       Empty,
       ParameterError,
