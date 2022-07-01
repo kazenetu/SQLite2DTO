@@ -17,20 +17,6 @@ namespace Domain.Exceptions
   public class DomainExceptionMessage
   {
     /// <summary>
-    /// 例外種別
-    /// </summary>
-    /// <remark>一時的に改名</remark>
-    [System.Obsolete]
-    public enum ExceptionTypes
-    {
-      Empty,
-      ParameterError,
-      DBError,
-      FileOutputError
-    }
-
-
-    /// <summary>
     /// 対象項目
     /// </summary>
     public string Target { get; init; }
