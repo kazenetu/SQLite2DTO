@@ -31,7 +31,7 @@ namespace Infrastructure.CSFiles.Templates
     /// <summary>
     /// namespace
     /// </summary>
-    public string NameSpace { private set; get; }
+    public string NameSpace { init; get; }
 
 
     /// <summary>
@@ -42,7 +42,7 @@ namespace Infrastructure.CSFiles.Templates
     /// <summary>
     /// スネークケースのままとするか
     /// </summary>
-    public bool UseSnakeCase { get; private set; }
+    public bool UseSnakeCase { get; init; }
 
     /// <summary>
     /// テーブル名やカラム名からC#用名称を取得

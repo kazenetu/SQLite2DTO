@@ -11,12 +11,12 @@ namespace Domain.CSFiles
     /// <summary>
     /// 出力パス
     /// </summary>
-    public string OutputPath { get; private set; }
+    public string OutputPath { get; init; }
 
     /// <summary>
     /// 名前空間
     /// </summary>
-    public string NameSpace { get; private set; }
+    public string NameSpace { get; init; }
 
     /// <summary>
     /// 非公開コンストラクタ
@@ -35,8 +35,8 @@ namespace Domain.CSFiles
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
-      if (string.IsNullOrEmpty(outputPath)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(outputPath)}[{outputPath}]", DomainExceptionMessage.ExceptionType.Empty));
-      if (string.IsNullOrEmpty(nameSpace)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(nameSpace)}[{nameSpace}]", DomainExceptionMessage.ExceptionType.Empty));
+      if (string.IsNullOrEmpty(outputPath)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(outputPath)}[{outputPath}]", ExceptionType.Empty));
+      if (string.IsNullOrEmpty(nameSpace)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(nameSpace)}[{nameSpace}]", ExceptionType.Empty));
       if (exceptionMessages.Count > 0) throw new DomainException(exceptionMessages.AsReadOnly());
 
       return new FileDataEntity()

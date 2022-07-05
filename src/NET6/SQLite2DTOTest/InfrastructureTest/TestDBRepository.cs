@@ -5,7 +5,7 @@ using System;
 using System.Linq;
 using Xunit;
 
-namespace PostgreSQL2DTOTest.InfrastructureTest
+namespace SQLite2DTOTest.InfrastructureTest
 {
   /// <summary>
   /// DBリポジトリのテスト
@@ -43,6 +43,7 @@ namespace PostgreSQL2DTOTest.InfrastructureTest
     {
     }
 
+    [Fact]
     public void ExceptionDBConnect()
     {
       var classes = repository.GetClasses(DBParameterEntity.Create(FailedSQLitePath));
@@ -51,6 +52,7 @@ namespace PostgreSQL2DTOTest.InfrastructureTest
       Assert.Empty(classes);
     }
 
+    [Fact]
     public void DBConnect()
     {
       var classes = repository.GetClasses(DBParameterEntity.Create(SQLitePath));

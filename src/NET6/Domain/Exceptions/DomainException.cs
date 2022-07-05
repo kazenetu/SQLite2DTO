@@ -11,7 +11,7 @@ namespace Domain.Exceptions
     /// <summary>
     /// メッセージリスト
     /// </summary>
-    public ReadOnlyCollection<DomainExceptionMessage> Messages { get; private set; }
+    public ReadOnlyCollection<DomainExceptionMessage> Messages { get; init; }
 
     /// <summary>
     /// コンストラクタ

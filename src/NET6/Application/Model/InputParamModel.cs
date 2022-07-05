@@ -11,22 +11,22 @@ namespace Application.Model
     /// <summary>
     /// CSファイルのクラスに設定する名前空間
     /// </summary>
-    public string NameSpace { get; private set; }
+    public string NameSpace { get; init; }
 
     /// <summary>
     /// CSファイル出力先ディレクトリパス
     /// </summary>
-    public string OutputPath { get; private set; }
+    public string OutputPath { get; init; }
 
     /// <summary>
     /// DB接続情報：SQLiteファイルのパス
     /// </summary>
-    public string SQLiteFilePath { get; private set; }
+    public string SQLiteFilePath { get; init; }
 
     /// <summary>
     /// スネークケースのままとするか
     /// </summary>
-    public bool UseSnakeCase { get; private set; }
+    public bool UseSnakeCase { get; init; }
 
     /// <summary>
     /// コンストラクタ
@@ -39,9 +39,9 @@ namespace Application.Model
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
-      if (string.IsNullOrEmpty(nameSpace)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(nameSpace)}[{nameSpace}]", DomainExceptionMessage.ExceptionType.Empty));
-      if (string.IsNullOrEmpty(outputPath)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(outputPath)}[{outputPath}]", DomainExceptionMessage.ExceptionType.Empty));
-      if (string.IsNullOrEmpty(sqliteFilePath)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(sqliteFilePath)}[{sqliteFilePath}]", DomainExceptionMessage.ExceptionType.Empty));
+      if (string.IsNullOrEmpty(nameSpace)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(nameSpace)}[{nameSpace}]", ExceptionType.Empty));
+      if (string.IsNullOrEmpty(outputPath)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(outputPath)}[{outputPath}]", ExceptionType.Empty));
+      if (string.IsNullOrEmpty(sqliteFilePath)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(sqliteFilePath)}[{sqliteFilePath}]", ExceptionType.Empty));
       if (exceptionMessages.Count > 0) throw new DomainException(exceptionMessages.AsReadOnly());
 
       NameSpace = nameSpace;

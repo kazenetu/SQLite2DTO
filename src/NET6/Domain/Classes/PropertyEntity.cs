@@ -12,19 +12,19 @@ namespace Domain.Classes
     /// 名称
     /// </summary>
     /// <value>プロパティ名</value>
-    public string Name { get; private set; }
+    public string Name { get; init; }
 
     /// <summary>
     /// 型名
     /// </summary>
     /// <value>型名称</value>
-    public string TypeName { get; private set; }
+    public string TypeName { get; init; }
 
     /// <summary>
     /// コメント
     /// </summary>
     /// <value>コメント文字列</value>
-    public string Comment { get; private set; }
+    public string Comment { get; init; }
 
     /// <summary>
     /// 非公開コンストラクタ
@@ -44,9 +44,9 @@ namespace Domain.Classes
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
-      if (string.IsNullOrEmpty(name)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(name)}[{name}]", DomainExceptionMessage.ExceptionType.Empty));
-      if (string.IsNullOrEmpty(typeName)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(typeName)}[{typeName}]", DomainExceptionMessage.ExceptionType.Empty));
-      if (string.IsNullOrEmpty(comment)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(comment)}[{comment}]", DomainExceptionMessage.ExceptionType.Empty));
+      if (string.IsNullOrEmpty(name)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(name)}[{name}]", ExceptionType.Empty));
+      if (string.IsNullOrEmpty(typeName)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(typeName)}[{typeName}]", ExceptionType.Empty));
+      if (string.IsNullOrEmpty(comment)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(comment)}[{comment}]", ExceptionType.Empty));
       if (exceptionMessages.Count > 0) throw new DomainException(exceptionMessages.AsReadOnly());
 
       return new PropertyEntity()

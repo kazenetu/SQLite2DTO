@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using Infrastructure.DB;
 
-namespace PostgreSQL2DTOTest.Shared
+namespace SQLite2DTOTest.Shared
 {
   /// <summary>
   /// DBモックリポジトリ
@@ -39,7 +39,7 @@ namespace PostgreSQL2DTOTest.Shared
       catch (Exception exception)
       {
         var exceptionMessages = new List<DomainExceptionMessage>();
-        exceptionMessages.Add(new DomainExceptionMessage($"{connectionString}", DomainExceptionMessage.ExceptionType.DBError));
+        exceptionMessages.Add(new DomainExceptionMessage($"{connectionString}", ExceptionType.DBError));
         throw new DomainException(exceptionMessages.AsReadOnly(), exception);
       }
 
@@ -65,8 +65,8 @@ namespace PostgreSQL2DTOTest.Shared
       Table tempTable = null;
 
       tempTable = new Table("m_test", "マスタテーブル");
-      tempTable.Columns.Add(new Column("int", "integer", "intになる"));
-      tempTable.Columns.Add(new Column("Date", "date", "Dateになる"));
+      tempTable.Columns.Add(new Column("int_1", "integer", "intになる"));
+      tempTable.Columns.Add(new Column("Date_1_1", "date", "Dateになる"));
       result.Add(tempTable);
 
       tempTable = new Table("t_test", "テストテーブル");

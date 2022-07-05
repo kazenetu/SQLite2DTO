@@ -41,7 +41,7 @@ namespace Application
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
-      if (inputParamModel is null) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(inputParamModel)}[{inputParamModel}]", DomainExceptionMessage.ExceptionType.Empty));
+      if (inputParamModel is null) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(inputParamModel)}[{inputParamModel}]", ExceptionType.Empty));
       if (exceptionMessages.Count > 0) throw new DomainException(exceptionMessages.AsReadOnly());
 
       var classes = dbRepository.GetClasses(DBParameterEntity.Create(inputParamModel.SQLiteFilePath));

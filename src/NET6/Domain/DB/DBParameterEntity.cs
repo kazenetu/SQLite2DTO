@@ -11,7 +11,7 @@ namespace Domain.DB
     /// <summary>
     /// DB接続情報：SQLiteファイルのパス
     /// </summary>
-    public string SQLiteFilePath { get; private set; }
+    public string SQLiteFilePath { get; init; }
 
     /// <summary>
     /// 非公開コンストラクタ
@@ -29,7 +29,7 @@ namespace Domain.DB
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
-      if (string.IsNullOrEmpty(sqliteFilePath)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(sqliteFilePath)}[{sqliteFilePath}]", DomainExceptionMessage.ExceptionType.Empty));
+      if (string.IsNullOrEmpty(sqliteFilePath)) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(sqliteFilePath)}[{sqliteFilePath}]", ExceptionType.Empty));
       if (exceptionMessages.Count > 0) throw new DomainException(exceptionMessages.AsReadOnly());
 
       return new DBParameterEntity()

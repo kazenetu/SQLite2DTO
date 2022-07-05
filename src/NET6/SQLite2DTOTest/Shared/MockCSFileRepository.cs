@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 
-namespace PostgreSQL2DTOTest.Shared
+namespace SQLite2DTOTest.Shared
 {
   /// <summary>
   /// CSファイル出力モックリポジトリ
@@ -24,8 +24,8 @@ namespace PostgreSQL2DTOTest.Shared
     {
       // パラメーターチェック
       var exceptionMessages = new List<DomainExceptionMessage>();
-      if (classEntities.Count == 0) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(classEntities)}[{classEntities}]", DomainExceptionMessage.ExceptionType.Empty));
-      if (fileDataEntity is null) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(fileDataEntity)}[{fileDataEntity}]", DomainExceptionMessage.ExceptionType.Empty));
+      if (classEntities.Count == 0) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(classEntities)}[{classEntities}]", ExceptionType.Empty));
+      if (fileDataEntity is null) exceptionMessages.Add(new DomainExceptionMessage($"{nameof(fileDataEntity)}[{fileDataEntity}]", ExceptionType.Empty));
       if (exceptionMessages.Count > 0) throw new DomainException(exceptionMessages.AsReadOnly());
 
       var result = new List<string>();
@@ -44,7 +44,7 @@ namespace PostgreSQL2DTOTest.Shared
       catch (System.Exception ex)
       {
         var messages = new List<DomainExceptionMessage>();
-        messages.Add(new DomainExceptionMessage($"{ex.Message}", DomainExceptionMessage.ExceptionType.FileOutputError));
+        messages.Add(new DomainExceptionMessage($"{ex.Message}", ExceptionType.FileOutputError));
         throw new DomainException(messages.AsReadOnly(), ex);
       }
 
