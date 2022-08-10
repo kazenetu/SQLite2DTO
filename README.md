@@ -87,7 +87,7 @@ SQLiteのテーブル情報を取得し、C#のDTOクラスを作成するプロ
      * Docker EngineやDocker Desktopがインストール済みであること。
 
    * 実行手順  
-     PostgreSQLコンテナとdotnetコンテナを起動する。
+     dotnetコンテナを起動する。
       1. docker_devに移動  
           ```sh
           cd docker_dev
