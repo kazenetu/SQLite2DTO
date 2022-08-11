@@ -71,15 +71,14 @@ SQLiteのテーブル情報を取得し、C#のDTOクラスを作成するプロ
 
 ## テスト
 * ローカル実行  
-   * すべて実行する場合  
-        dotnet testで実行する。  
-        ```sh
-        --.NET6
-        dotnet test ./src/NET6/SQLite2DTOTest/SQLite2DTOTest.csproj
+    dotnet testで実行する。  
+    ```sh
+    --.NET6
+    dotnet test ./src/NET6/SQLite2DTOTest/SQLite2DTOTest.csproj
 
-        --.NET5
-        dotnet test ./src/NET5/SQLite2DTOTest/SQLite2DTOTest.csproj
-        ```  
+    --.NET5
+    dotnet test ./src/NET5/SQLite2DTOTest/SQLite2DTOTest.csproj
+    ```  
 
 * Dockerコンテナでの実行  
     Dockerコンテナ上で開発環境を構築する。  
